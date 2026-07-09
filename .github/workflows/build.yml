@@ -1,0 +1,37 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Grant Permissions
+        run: |
+          cd AI3DStudioMobile
+          chmod +x gradlew
+          chmod +x build_apk.sh
+
+      - name: Run Build Script
+        run: |
+          cd AI3DStudioMobile
+          ./build_apk.sh
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI3DStudioMobile-APK
+          path: |
+            AI3DStudioMobile/app/build/outputs/apk/**/*.apk
+            AI3DStudioMobile/app/build/outputs/**/*.aab
