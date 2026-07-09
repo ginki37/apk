@@ -1,0 +1,23 @@
+name: Unzip
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: unzip -o AI3DStudioMobile.zip
+
+      - run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@users.noreply.github.com"
+          git add .
+          git commit -m "Extract ZIP" || echo "No changes"
+          git push
