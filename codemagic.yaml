@@ -1,0 +1,84 @@
+definitions:
+  android_apk_artifacts: &android_apk_artifacts
+    - app/build/outputs/apk/**/*.apk
+    - app/build/outputs/apk/**/output-metadata.json
+    - app/build/outputs/mapping/**/mapping.txt
+    - app/build/reports/tests/**
+
+workflows:
+  android-native-build:
+    name: AI 3D Studio Mobile - Android Build
+    max_build_duration: 60
+    instance_type: linux_x2
+
+    environment:
+      java: 17
+      vars:
+        PACKAGE_NAME: "com.ai3dstudio.mobile"
+
+    scripts:
+      - name: Print toolchain versions
+        script: |
+          echo "== Java =="
+          java -version
+          echo "== Android SDK root =="
+          echo "$ANDROID_SDK_ROOT"
+          echo "== Gradle wrapper =="
+          cat gradle/wrapper/gradle-wrapper.properties
+
+      - name: Generate local.properties
+        script: |
+          if [ -z "$ANDROID_SDK_ROOT" ] && [ -z "$ANDROID_HOME" ]; then
+            echo "ERROR: Neither ANDROID_SDK_ROOT nor ANDROID_HOME is set on this build machine." >&2
+            exit 1
+          fi
+          SDK_PATH="${ANDROID_SDK_ROOT:-$ANDROID_HOME}"
+          echo "sdk.dir=$SDK_PATH" > "$CM_BUILD_DIR/local.properties"
+          cat "$CM_BUILD_DIR/local.properties"
+
+      - name: Decode release signing keystore (optional)
+        script: |
+          if [ -n "$RELEASE_KEYSTORE_BASE64" ]; then
+            KEYSTORE_PATH="$CM_BUILD_DIR/release-keystore.jks"
+            echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > "$KEYSTORE_PATH"
+
+            if [ -z "$RELEASE_STORE_PASSWORD" ] || [ -z "$RELEASE_KEY_ALIAS" ] || [ -z "$RELEASE_KEY_PASSWORD" ]; then
+              echo "ERROR: RELEASE_KEYSTORE_BASE64 was provided but one of RELEASE_STORE_PASSWORD, RELEASE_KEY_ALIAS, RELEASE_KEY_PASSWORD is missing." >&2
+              exit 1
+            fi
+
+            echo "RELEASE_STORE_FILE=$KEYSTORE_PATH" >> "$CM_ENV"
+            echo "Release keystore decoded — signed Release APK will be built."
+          else
+            echo "RELEASE_KEYSTORE_BASE64 not set — Release APK will be built with debug signing (see app/build.gradle.kts signingConfigs)."
+          fi
+
+      - name: Grant execute permission to gradlew
+        script: chmod +x ./gradlew
+
+      - name: Clean project
+        script: ./gradlew clean --console=plain --no-daemon
+
+      - name: Run unit tests
+        script: ./gradlew testDebugUnitTest --console=plain --no-daemon
+        ignore_failure: true
+
+      - name: Build Debug APK
+        script: ./gradlew assembleDebug --console=plain --no-daemon
+
+      - name: Build Release APK
+        script: ./gradlew assembleRelease --console=plain --no-daemon
+
+      - name: List generated APKs
+        script: |
+          echo "== APK outputs =="
+          find . -path "*/build/outputs/apk/*" -name "*.apk"
+
+    artifacts: *android_apk_artifacts
+
+    publishing:
+      email:
+        recipients: []
+        notify:
+          success: true
+          failure: true
