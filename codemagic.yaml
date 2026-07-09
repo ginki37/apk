@@ -50,7 +50,7 @@ workflows:
             echo "RELEASE_STORE_FILE=$KEYSTORE_PATH" >> "$CM_ENV"
             echo "Release keystore decoded — signed Release APK will be built."
           else
-            echo "RELEASE_KEYSTORE_BASE64 not set — Release APK will be built with debug signing (see app/build.gradle.kts signingConfigs)."
+            echo "RELEASE_KEYSTORE_BASE64 not set — Release APK will be built with debug signing."
           fi
 
       - name: Grant execute permission to gradlew
@@ -75,10 +75,3 @@ workflows:
           find . -path "*/build/outputs/apk/*" -name "*.apk"
 
     artifacts: *android_apk_artifacts
-
-    publishing:
-      email:
-        recipients: []
-        notify:
-          success: true
-          failure: true
