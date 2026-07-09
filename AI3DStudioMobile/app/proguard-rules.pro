@@ -1,0 +1,11 @@
+# AI 3D Studio Mobile - ProGuard / R8 rules
+-keepattributes *Annotation*
+-keep class com.ai3dstudio.mobile.core.domain.model.** { *; }
+-keep class com.ai3dstudio.mobile.core.data.remote.dto.** { *; }
+-keepclassmembers class kotlinx.serialization.json.** { *** Companion; }
+-keepclasseswithmembers class kotlinx.serialization.json.** { kotlinx.serialization.KSerializer serializer(...); }
+-keep @kotlinx.serialization.Serializable class * { *; }
+-dontwarn org.tensorflow.**
+-keep class org.tensorflow.** { *; }
+-keep class com.google.android.filament.** { *; }
+-keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation

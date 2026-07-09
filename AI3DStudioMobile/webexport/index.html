@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 3D Studio Mobile — تنزيل المشروع</title>
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --bg-card: #131826;
+    --accent: #7c5cff;
+    --accent2: #22d3ee;
+    --text: #eef1f8;
+    --muted: #9aa4bd;
+    --border: #232a3d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,0.25), transparent),
+                radial-gradient(1000px 500px at -10% 110%, rgba(34,211,238,0.18), transparent),
+                var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    max-width: 720px;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,92,255,0.15);
+    color: var(--accent2);
+    border: 1px solid rgba(124,92,255,0.35);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  p.lead {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .stat .label { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+  .stat .value { font-size: 16px; font-weight: 600; }
+  .download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: #0b0f1a;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .download-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(124,92,255,0.35); }
+  .hint {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 14px;
+  }
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .tech span {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #4ade80;
+    margin-top: 24px;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+    box-shadow: 0 0 0 4px rgba(74,222,128,0.15);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">📦 حزمة مشروع أندرويد جاهزة</span>
+    <h1>AI 3D Studio Mobile</h1>
+    <p class="lead">
+      مشروع Android Studio كامل وجاهز — تطبيق Kotlin / Jetpack Compose لتوليد
+      الصور والنماذج ثلاثية الأبعاد والألعاب بالذكاء الاصطناعي، يُهيَّأ بالكامل
+      من خلال عنوان خادم واحد (Base URL) مع اكتشاف تلقائي للنماذج والقدرات.
+    </p>
+
+    <div class="grid">
+      <div class="stat">
+        <div class="label">اللغة</div>
+        <div class="value">Kotlin + Jetpack Compose</div>
+      </div>
+      <div class="stat">
+        <div class="label">البنية</div>
+        <div class="value">Clean Architecture · MVVM</div>
+      </div>
+      <div class="stat">
+        <div class="label">العرض ثلاثي الأبعاد</div>
+        <div class="value">Filament · OpenGL ES 3.2 / Vulkan</div>
+      </div>
+      <div class="stat">
+        <div class="label">الحد الأدنى لإصدار أندرويد</div>
+        <div class="value">Android 10 (API 29)</div>
+      </div>
+    </div>
+
+    <a class="download-btn" href="./AI3DStudioMobile.zip" download>
+      ⬇️ تنزيل ملف المشروع (ZIP)
+    </a>
+    <p class="hint">
+      بعد التنزيل: فك الضغط ← افتح المجلد في Android Studio ← شغّل <code>./gradlew assembleDebug</code>
+      أو نفّذ <code>build_apk.sh</code> مباشرة.
+    </p>
+
+    <div class="tech">
+      <span>Hilt</span>
+      <span>Room</span>
+      <span>Retrofit</span>
+      <span>WorkManager</span>
+      <span>DataStore</span>
+      <span>ML Kit</span>
+      <span>TensorFlow Lite</span>
+      <span>EncryptedSharedPreferences</span>
+      <span>Android Keystore</span>
+      <span>Certificate Pinning</span>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      المشروع مكتمل الملفات — بدون أي أجزاء ناقصة أو TODO
+    </div>
+  </div>
+</body>
+</html>

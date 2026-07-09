@@ -1,0 +1,3 @@
+## انسخ هذا الملف إلى local.properties وعدّل المسار حسب جهازك
+## Android Studio ينشئ هذا الملف تلقائياً عند فتح المشروع لأول مرة
+sdk.dir=/path/to/Android/sdk

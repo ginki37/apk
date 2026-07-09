@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI 3D Studio Mobile</string>
+
+    <string name="setup_title">إعداد الخادم</string>
+    <string name="setup_subtitle">أدخل عنوان الخادم (Base URL) فقط، وسنكتشف الباقي تلقائياً</string>
+    <string name="setup_base_url_label">Base URL</string>
+    <string name="setup_base_url_hint">https://example.com/api</string>
+    <string name="setup_connect">اتصال واكتشاف تلقائي</string>
+    <string name="setup_discovering">جارِ اكتشاف قدرات الخادم…</string>
+    <string name="setup_error_invalid_url">الرجاء إدخال عنوان صحيح يبدأ بـ https://</string>
+    <string name="setup_error_unreachable">تعذر الاتصال بالخادم، تحقق من العنوان والاتصال بالإنترنت</string>
+
+    <string name="nav_chat">المحادثة</string>
+    <string name="nav_image">الصور</string>
+    <string name="nav_model3d">النماذج ثلاثية الأبعاد</string>
+    <string name="nav_game">الألعاب</string>
+    <string name="nav_projects">المشاريع</string>
+    <string name="nav_assets">مكتبة الأصول</string>
+    <string name="nav_settings">الإعدادات</string>
+
+    <string name="chat_input_hint">اكتب طلبك… مثال: أنشئ سيارة رياضية</string>
+    <string name="chat_send">إرسال</string>
+    <string name="chat_new_project">مشروع جديد</string>
+
+    <string name="image_generate">توليد الصورة</string>
+    <string name="image_prompt_hint">صف الصورة التي تريدها</string>
+    <string name="image_quality">الجودة</string>
+    <string name="image_size">الأبعاد</string>
+    <string name="image_count">عدد الصور</string>
+    <string name="image_style">الأسلوب الفني</string>
+    <string name="image_format">الصيغة</string>
+
+    <string name="model3d_generate">توليد النموذج</string>
+    <string name="model3d_prompt_hint">صف النموذج ثلاثي الأبعاد</string>
+    <string name="model3d_format">صيغة التصدير</string>
+    <string name="model3d_detail_level">مستوى التفاصيل</string>
+    <string name="model3d_poly_count">عدد المضلعات</string>
+    <string name="model3d_view">عرض ثلاثي الأبعاد</string>
+
+    <string name="game_generate">توليد اللعبة</string>
+    <string name="game_prompt_hint">مثال: أنشئ لعبة بقاء</string>
+    <string name="game_export">تصدير game.zip</string>
+
+    <string name="settings_theme">المظهر</string>
+    <string name="settings_theme_system">حسب النظام</string>
+    <string name="settings_theme_light">فاتح</string>
+    <string name="settings_theme_dark">داكن</string>
+    <string name="settings_server">إعدادات الخادم</string>
+    <string name="settings_security">الأمان والخصوصية</string>
+    <string name="settings_change_url">تغيير عنوان الخادم</string>
+    <string name="settings_clear_cache">مسح الذاكرة المؤقتة</string>
+</resources>
