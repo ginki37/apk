@@ -1,9 +1,9 @@
 definitions:
   android_apk_artifacts: &android_apk_artifacts
-    - app/build/outputs/apk/**/*.apk
-    - app/build/outputs/apk/**/output-metadata.json
-    - app/build/outputs/mapping/**/mapping.txt
-    - app/build/reports/tests/**
+    - AI3DStudioMobile/app/build/outputs/apk/**/*.apk
+    - AI3DStudioMobile/app/build/outputs/apk/**/output-metadata.json
+    - AI3DStudioMobile/app/build/outputs/mapping/**/mapping.txt
+    - AI3DStudioMobile/app/build/reports/tests/**
 
 workflows:
   android-native-build:
@@ -15,17 +15,30 @@ workflows:
       java: 17
 
     scripts:
+      - name: Show repository structure
+        script: |
+          pwd
+          ls -la
+          ls -la AI3DStudioMobile || true
+
       - name: Grant execute permission
-        script: chmod +x gradlew
+        script: |
+          cd AI3DStudioMobile
+          chmod +x gradlew
 
       - name: Generate local.properties
         script: |
+          cd AI3DStudioMobile
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-      - name: Clean
-        script: ./gradlew clean --no-daemon
+      - name: Clean project
+        script: |
+          cd AI3DStudioMobile
+          ./gradlew clean --no-daemon
 
       - name: Build Debug APK
-        script: ./gradlew assembleDebug --no-daemon
+        script: |
+          cd AI3DStudioMobile
+          ./gradlew assembleDebug --no-daemon
 
     artifacts: *android_apk_artifacts
